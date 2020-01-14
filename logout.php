@@ -1,0 +1,70 @@
+
+
+<?php
+
+
+session_start();
+
+
+
+   $employee_name =  $_SESSION["employee_name"] ;
+ $customer_name =  $_SESSION["customer_name"] ;
+
+include("connect.php");
+$log_time=date("Y-m-d  H:i:s", time());
+$ip =  $_SERVER['REMOTE_ADDR'];
+
+$Sql="insert into  visitor_logs (time,ipaddr,name,action) VALUES('$log_time','$employee_name','$ip','logout') ";
+
+$result=mysqli_query($con,$Sql);
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Techroutes Technical Support</title>
+  <!-- Bootstrap core CSS-->
+  <link href="customer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="customer/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="customer/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header"><center><img src="customer/images/logo.jpg" class="login_main_img" style="height: 40px;width: 200px;margin-top: 4px;" /></center>
+</div>
+      <div class="card-body">
+
+
+        <form>
+          
+          
+          
+          <a class="btn btn-primary btn-block" href="customer/customer_login.php">Customer Login</a>
+          <a class="btn btn-primary btn-block" href="employee/employee_login.php">Employee Login</a>
+
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>
